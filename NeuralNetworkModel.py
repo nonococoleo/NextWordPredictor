@@ -1,4 +1,4 @@
-#https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-language-model-nlp-python-code/
+# https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-language-model-nlp-python-code/
 import numpy as np
 import pandas as pd
 from keras.utils import to_categorical
@@ -42,37 +42,43 @@ We, therefore, the Representatives of the united States of America, in General C
 
 import re
 
+
 def text_cleaner(text):
     # lower case text
     newString = text.lower()
-    newString = re.sub(r"'s\b","",newString)
+    newString = re.sub(r"'s\b", "", newString)
     # remove punctuations
     newString = re.sub("[^a-zA-Z]", " ", newString)
-    long_words=[]
+    long_words = []
     # remove short word
     for i in newString.split():
-        if len(i)>=3:
+        if len(i) >= 3:
             long_words.append(i)
     return (" ".join(long_words)).strip()
 
+
 # preprocess the text
 data_new = text_cleaner(data_text)
+
+
 def create_seq(text):
     length = 30
     sequences = list()
     for i in range(length, len(text)):
         # select sequence of tokens
-        seq = text[i-length:i+1]
+        seq = text[i - length:i + 1]
         # store
         sequences.append(seq)
     print('Total Sequences: %d' % len(sequences))
     return sequences
+
 
 # create sequences
 sequences = create_seq(data_new)
 # create a character mapping index
 chars = sorted(list(set(data_new)))
 mapping = dict((c, i) for i, c in enumerate(chars))
+
 
 def encode_seq(seq):
     sequences = list()
@@ -83,6 +89,7 @@ def encode_seq(seq):
         sequences.append(encoded_seq)
     return sequences
 
+
 # encode the sequences
 sequences = encode_seq(sequences)
 from sklearn.model_selection import train_test_split
@@ -91,7 +98,7 @@ from sklearn.model_selection import train_test_split
 vocab = len(mapping)
 sequences = np.array(sequences)
 # create X and y
-X, y = sequences[:,:-1], sequences[:,-1]
+X, y = sequences[:, :-1], sequences[:, -1]
 # one hot encode y
 y = to_categorical(y, num_classes=vocab)
 # create train and validation sets
@@ -109,27 +116,30 @@ print(model.summary())
 model.compile(loss='categorical_crossentropy', metrics=['acc'], optimizer='adam')
 # fit the model
 model.fit(X_tr, y_tr, epochs=100, verbose=2, validation_data=(X_val, y_val))
+
+
 # generate a sequence of characters with a language model
 def generate_seq(model, mapping, seq_length, seed_text, n_chars):
-	in_text = seed_text
-	# generate a fixed number of characters
-	for _ in range(n_chars):
-		# encode the characters as integers
-		encoded = [mapping[char] for char in in_text]
-		# truncate sequences to a fixed length
-		encoded = pad_sequences([encoded], maxlen=seq_length, truncating='pre')
-		# predict character
-		yhat = model.predict_classes(encoded, verbose=0)
-		# reverse map integer to character
-		out_char = ''
-		for char, index in mapping.items():
-			if index == yhat:
-				out_char = char
-				break
-		# append to input
-		in_text += char
-	return in_text
+    in_text = seed_text
+    # generate a fixed number of characters
+    for _ in range(n_chars):
+        # encode the characters as integers
+        encoded = [mapping[char] for char in in_text]
+        # truncate sequences to a fixed length
+        encoded = pad_sequences([encoded], maxlen=seq_length, truncating='pre')
+        # predict character
+        yhat = model.predict_classes(encoded, verbose=0)
+        # reverse map integer to character
+        out_char = ''
+        for char, index in mapping.items():
+            if index == yhat:
+                out_char = char
+                break
+        # append to input
+        in_text += char
+    return in_text
+
 
 inp = 'large armies of'
 print(len(inp))
-print(generate_seq(model,mapping,30,inp.lower(),15))
+print(generate_seq(model, mapping, 30, inp.lower(), 15))
