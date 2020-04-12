@@ -13,19 +13,20 @@ def pre(corpus, length=3):
 
 def clean(text):
     res = []
+    symbols = [',', '?']
     for i in nltk.sent_tokenize(text):
-        for j in i.split(","):
-            temp = []
-            sent = nltk.word_tokenize(j.lower())
-            for k in sent:
-                if len(k) > 1 and k.isalpha():
-                    temp.append(k)
-            res.append(temp)
+        temp = []
+        sent = nltk.word_tokenize(i)
+        for k in sent:
+            if k.isalpha() or k in symbols:
+                temp.append(k)
+        temp.append('.')
+        res.append(temp)
     return res
 
 
 if __name__ == '__main__':
-    with open("bell.txt") as f:
+    with open("small_train.txt") as f:
         lines = f.readlines()
     text = ""
     for i in lines:
