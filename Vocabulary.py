@@ -27,8 +27,8 @@ class Vocabulary:
     def get_idx(self, words):
         return [self.word2idx.get(token, 1) for token in words]
 
-    def get_word(self, idx):
-        return self.idx2word[idx if 0 <= idx < self.num_of_words else 1]
+    def get_word(self, idxs):
+        return [self.idx2word[idx if 0 <= idx < self.num_of_words else 1] for idx in idxs]
 
     def load_corpus(self, corpus):
         self.idx2word = ['<PAD>', '<UNK>']
@@ -57,14 +57,14 @@ class Vocabulary:
         label_data = self.get_idx(labels)
         return np.array(text_data), np.array(label_data)
 
-    def load_data(self, file,window_length=3):
+    def load_data(self, file, window_length):
         with open(file) as f:
             lines = f.readlines()
         text = ""
         for i in lines:
             text += " " + i.strip()
         corpus = clean(text)
-        return self.featurize(*pre(corpus,window_length))
+        return self.featurize(*pre(corpus, window_length))
 
 
 if __name__ == '__main__':
@@ -86,5 +86,3 @@ if __name__ == '__main__':
     with open("vocab", "wb") as f:
         dump(app, f, -1)
     print("model saved")
-
-    # print(app.get_idx(['he','hopes','to']))
