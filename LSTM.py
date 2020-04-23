@@ -19,8 +19,7 @@ class TextDataset(Dataset):
 
 
 class LSTMClassifier(nn.Module):
-
-    def __init__(self, embeddings, hidden_size, num_layers, dropout_prob=0.3):
+    def __init__(self, embeddings, hidden_size, num_layers, dropout_prob=0.4):
         super().__init__()
         self.embedding_layer = self.load_pretrained_embeddings(embeddings)
         self.lstm = nn.LSTM(embeddings.shape[1], hidden_size, num_layers, dropout=dropout_prob, batch_first=True)
@@ -55,21 +54,26 @@ def evaluate(model, dataloader, device):
     return accuracy
 
 
-def train(device, app, file_name, window_length=3, hidden_size=500, num_layers=2, BATCH_SIZE=64, NUM_EPOCHS=1000,
-          patience=3):
-    model = LSTMClassifier(app.embeddings, hidden_size, num_layers)
-    model.to(device)
+def train(device, app, file_name, window_length=3, hidden_size=600, num_layers=2, dropout_prob=0.4, BATCH_SIZE=64,
+          start=0, NUM_EPOCHS=1000, patience=10, model=None):
+    print("training")
+    if not model:
+        # TODO
+        model = LSTMClassifier(app.embeddings, hidden_size, num_layers, dropout_prob)
+        model.to(device)
+    # TODO
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+    # TODO
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
     # print(model)
 
-    train_data, train_label = app.load_data(file_name, window_length)
+    train_data, train_label = app.load_corpus(file_name, window_length)
     train_loader = torch.utils.data.DataLoader(dataset=TextDataset(train_data, train_label),
                                                batch_size=BATCH_SIZE,
                                                shuffle=True)
 
     losses = []
-    for epoch in range(NUM_EPOCHS):
+    for epoch in range(start, NUM_EPOCHS):
         temp = []
         print("*" * 40 + str(epoch) + "*" * 40)
         model.train()  # this enables regularization, which we don't currently have
@@ -83,15 +87,23 @@ def train(device, app, file_name, window_length=3, hidden_size=500, num_layers=2
         cur_loss = sum(temp) / len(temp)
         losses.append(cur_loss)
         print(cur_loss)
-        if cur_loss > max(losses[-1 - patience:]):
+        if len(losses) >= patience and cur_loss > max(losses[-1 - patience:-1]):
             torch.save(model, "model_%d.pt" % epoch)
             break
-        if epoch % 10 == 0:
+        if epoch % patience == 0:
             torch.save(model, "model_%d.pt" % epoch)
+    return model
 
 
 def test(device, app, model, file_name, window_length=3, BATCH_SIZE=64):
-    test_data, test_label = app.load_data(file_name, window_length)
+    print("testing")
+    test_data, test_label = app.load_corpus(file_name, window_length)
+    remove = []
+    for i in range(len(test_label)):
+        if test_label[i] < 2:
+            remove.append(i)
+    test_data = np.delete(test_data, remove, axis=0)
+    test_label = np.delete(test_label, remove, axis=0)
     test_loader = torch.utils.data.DataLoader(dataset=TextDataset(test_data, test_label),
                                               batch_size=BATCH_SIZE,
                                               shuffle=True)
@@ -107,29 +119,14 @@ if __name__ == '__main__':
         device = torch.device("cuda:0")
     else:
         device = torch.device('cpu')
-    with open("vocab", "rb") as f:
+    with open("small-vocab", "rb") as f:
         app = load(f)
 
-    window_length = 3
-    train(device, app, "small_train.txt", window_length)
+    # TODO
+    window_length = 4
+    train_file = "corpus/train_business.pkl"
+    model = torch.load("model_80.pt", map_location=torch.device('cpu'))
+    # model = train(device, app, train_file, window_length)
 
-    model = torch.load("model_0.pt")
-    test(device, app, model, "small_test.txt")
-
-    top_k = 3
-    example = ["open", "up", "the"]
-    for _ in range(10):
-        print(example)
-        idx = app.get_idx(example[-window_length:])
-
-        test = torch.from_numpy(np.array([idx]))
-        results = model(test.to(device)).detach().cpu().numpy()
-
-        best = None
-        for res in results:
-            temp = res.argsort()[::-1]
-            for i in temp[:top_k]:
-                print(i, app.get_word(i), end="\t")
-            print()
-            best = app.get_word(temp[0])
-        example.append(best)
+    test_file = "corpus/test_tech.pkl"
+    test(device, app, model, test_file, window_length)
