@@ -1,7 +1,9 @@
 import nltk
+import os
+from pickle import dump,load
 
 
-def pre(corpus, length=3):
+def pad(corpus, length=3):
     data = []
     label = []
     for sent in corpus:
@@ -13,28 +15,40 @@ def pre(corpus, length=3):
 
 def clean(text):
     res = []
-    symbols = [',', '?']
-    for i in nltk.sent_tokenize(text):
-        temp = []
-        sent = nltk.word_tokenize(i)
-        for k in sent:
-            if k.isalpha() or k in symbols:
-                temp.append(k)
-        temp.append('.')
-        res.append(temp)
+    for i in text.split('\n'):
+        for j in nltk.sent_tokenize(i):
+            temp = []
+            sent = nltk.word_tokenize(j)
+            if len(sent) > 2:
+                for k in sent:
+                    if k.isalpha() or k == ',':
+                        temp.append(k)
+                temp.append('.')
+                res.append(temp)
     return res
 
 
+def load_dataset(path, category):
+    files = os.listdir(path)
+    res = []
+    for file in files:
+        with open(file) as f:
+            lines = f.readlines()
+        res.append(lines)
+    with open(path + category + ".pkl", "rb") as f:
+        dump(res, f, -1)
+
+def load_data(path):
+    with open(path,'rb') as f:
+        data=load(f)
+    return data
+
 if __name__ == '__main__':
-    with open("small_train.txt") as f:
-        lines = f.readlines()
+    data=load_data("corpus/train_business.pkl")
     text = ""
-    for i in lines:
-        text += " " + i.strip()
+    for lines in data:
+        text += lines + "\n"
     corpus = clean(text)
-    data, label = pre(corpus)
-    print(data)
-    print(label)
-    # data, label = pre(text)
-    # for i in range(len(data)):
-    #     print(data[i], label[i])
+    data,label=pad(corpus)
+    print(data[:10])
+    print(label[:10])

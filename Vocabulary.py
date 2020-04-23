@@ -30,7 +30,7 @@ class Vocabulary:
     def get_word(self, idxs):
         return [self.idx2word[idx if 0 <= idx < self.num_of_words else 1] for idx in idxs]
 
-    def load_corpus(self, corpus):
+    def build_word_dict(self, corpus):
         self.idx2word = ['<PAD>', '<UNK>']
         self.word2idx = {'<PAD>': 0, '<UNK>': 1}
         self.num_of_words = 2
@@ -44,9 +44,9 @@ class Vocabulary:
                         self.idx2word.append(word)
                         self.word2idx[word] = self.num_of_words
                         self.num_of_words += 1
-                    res.append(self.glove[word])
+                        res.append(self.glove[word])
         self.embeddings = np.array(res)
-        print("corpus loaded")
+        print("word dict built")
 
     def featurize(self, data, labels):
         text_data = []
@@ -57,14 +57,13 @@ class Vocabulary:
         label_data = self.get_idx(labels)
         return np.array(text_data), np.array(label_data)
 
-    def load_data(self, file, window_length):
-        with open(file) as f:
-            lines = f.readlines()
+    def load_corpus(self, file, window_length):
+        data = load_data(file)
         text = ""
-        for i in lines:
-            text += " " + i.strip()
+        for lines in data:
+            text+= lines+"\n"
         corpus = clean(text)
-        return self.featurize(*pre(corpus, window_length))
+        return self.featurize(*pad(corpus, window_length))
 
 
 if __name__ == '__main__':
@@ -73,16 +72,14 @@ if __name__ == '__main__':
     # app = Vocabulary('glove.6B.300d.txt')
     app = load(open("vocab", "rb"))
 
-    with open("train.txt") as f:
-        lines = f.readlines()
+    data = load_data("corpus/train_business.pkl")
     text = ""
-    for i in lines:
-        text += " " + i.strip()
+    for lines in data:
+        text+= lines+"\n"
     corpus = clean(text)
-    print("corpus built")
+    print("corpus loaded")
 
-    app.load_corpus(corpus)
-
-    with open("vocab", "wb") as f:
+    app.build_word_dict(corpus)
+    with open("small-vocab", "wb") as f:
         dump(app, f, -1)
     print("model saved")
