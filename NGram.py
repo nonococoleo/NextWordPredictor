@@ -3,7 +3,7 @@
 from data import *
 
 
-def build_model(n=3, file="corpus/train_all.pkl"):
+def build_model(n, file):
     ngrams = {}
     data = load_data(file)
     text = ""
@@ -25,6 +25,8 @@ def build_model(n=3, file="corpus/train_all.pkl"):
             count += ngrams[seq][words]
         for words in ngrams[seq].keys():
             ngrams[seq][words] /= count
+    print("Train File: " + file)
+    print("N: " + str(n))
     return ngrams
 
 
@@ -39,7 +41,7 @@ def chooseFromDist(pos):
     return best_word
 
 
-def run_model(n=3, ngrams=build_model(), given_words=["Ad", "sales", "boost"], num_to_predict=50):
+def run_model(n, ngrams, given_words, num_to_predict):
     curr_sequence = ' '.join(given_words[-n:])
     #print()
     output = curr_sequence
@@ -59,7 +61,7 @@ def run_model(n=3, ngrams=build_model(), given_words=["Ad", "sales", "boost"], n
     #print(output)
 
 
-def test_model(n=3, ngrams=build_model(), test_file="corpus/test_business.pkl"):
+def test_model(n, ngrams, test_file):
     test_data = load_data(test_file)
     test_text = ""
     correctCount = 0
@@ -81,7 +83,7 @@ def test_model(n=3, ngrams=build_model(), test_file="corpus/test_business.pkl"):
     print("Test File: " + test_file)
     print("Total Words: " + str(len(words_tokens)-n))
     print("Correct Count: " + str(correctCount))
-    #print(empty)
+    # print(empty)
     print("Wrong Count: " + str(wrongCount))
     print("Accuracy: " + str(correctCount / (len(words_tokens) - n)))
 
@@ -90,7 +92,7 @@ n = 1
 model = build_model(n, "corpus/train_all.pkl")
 # given_previous_words = ["May", "last", "year", ","]
 # number_of_next_words_to_predict = 50
-#run_model(n, model, given_previous_words, number_of_next_words_to_predict)
+# run_model(n, model, given_previous_words, number_of_next_words_to_predict)
 test_file = "corpus/test_business.pkl"
 test_model(n, model, test_file)
 
