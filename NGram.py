@@ -1,10 +1,9 @@
 # https://stackabuse.com/python-for-nlp-developing-an-automatic-text-filler-using-n-grams/
 
-import random
 from data import *
 
 
-def build_model(n=3, file="corpus/train_business.pkl"):
+def build_model(n=3, file="corpus/train_all.pkl"):
     ngrams = {}
     data = load_data(file)
     text = ""
@@ -31,13 +30,13 @@ def build_model(n=3, file="corpus/train_business.pkl"):
 
 def chooseFromDist(pos):
     # pos = {'A': Decimal("0.3"), 'B': Decimal("0.4"), 'C': Decimal("0.3")}
-    choice = random.random()
-    Tp = 0
+    best_word = "the"
+    best_prob = 0
     for k, p in pos.items():
-        Tp += p
-        if choice <= Tp:
-            return k
-    return 'Choose error'
+        if best_prob < p:
+            best_prob = p
+            best_word = k
+    return best_word
 
 
 def run_model(n=3, ngrams=build_model(), given_words=["Ad", "sales", "boost"], num_to_predict=50):
@@ -48,32 +47,58 @@ def run_model(n=3, ngrams=build_model(), given_words=["Ad", "sales", "boost"], n
         if curr_sequence not in ngrams.keys():
             # todo: find a way to select next word even if the given sequence not exists in model
             # choose most often occurred words or change the given sequence to a similar one
-            break
+            return "the"
         possible_words = ngrams[curr_sequence]
-        # probability based: done
         next_word = chooseFromDist(possible_words)
-        return next_word
+        if num_to_predict == 1:
+            return next_word
         output += ' ' + next_word
         seq_words = nltk.word_tokenize(output)
         curr_sequence = ' '.join(seq_words[len(seq_words) - n:len(seq_words)])
+    return curr_sequence
     #print(output)
 
-def test_model(n=3,ngrams=build_model(),test_file="corpus/test_business.pkl"):
+
+def test_model(n=3, ngrams=build_model(), test_file="corpus/test_business.pkl"):
     test_data = load_data(test_file)
     test_text = ""
     correctCount = 0
+    wrongCount = 0
+    #empty = 0
     for lines in test_data:
         test_text += lines + "\n"
     test_corpus = clean(test_text)
     test_data, words_tokens = pad(test_corpus)
     for i in range(len(words_tokens)-n):
-        if words_tokens[i+n] == run_model(n,ngrams,words_tokens[i:i+n],1):
+        word = run_model(n,ngrams,words_tokens[i:i+n],1)
+        if words_tokens[i+n] == word:
             correctCount += 1
-    print(correctCount/len(words_tokens))
-n = 3
-model = build_model(n, "corpus/train_business.pkl")
-given_previous_words = ["May", "last", "year", ","]
-number_of_next_words_to_predict = 50
-run_model(n, model, given_previous_words, number_of_next_words_to_predict)
-test_file="corpus/test_business.pkl"
-test_model(n,model,test_file)
+        # elif word == "":
+        #     empty += 1
+        else:
+            wrongCount += 1
+
+    print("Test File: " + test_file)
+    print("Total Words: " + str(len(words_tokens)-n))
+    print("Correct Count: " + str(correctCount))
+    #print(empty)
+    print("Wrong Count: " + str(wrongCount))
+    print("Accuracy: " + str(correctCount / (len(words_tokens) - n)))
+
+
+n = 1
+model = build_model(n, "corpus/train_all.pkl")
+# given_previous_words = ["May", "last", "year", ","]
+# number_of_next_words_to_predict = 50
+#run_model(n, model, given_previous_words, number_of_next_words_to_predict)
+test_file = "corpus/test_business.pkl"
+test_model(n, model, test_file)
+
+''' 
+Test File: corpus/test_business.pkl
+Total Words: 19476
+Correct Count: 3267
+Wrong Count: 16209
+Accuracy: 0.16774491682070242
+'''
+
