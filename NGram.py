@@ -1,38 +1,45 @@
 # https://stackabuse.com/python-for-nlp-developing-an-automatic-text-filler-using-n-grams/
+# https://www.cs.cornell.edu/courses/cs4740/2014sp/lectures/smoothing+backoff.pdf
 
 from data import *
 
+MOST_COMMON_WORD = "the"
+
 
 def build_model(n, file):
-    ngrams = {}
+    ngrams_backoff = []
     data = load_data(file)
     text = ""
     for lines in data:
         text += lines + "\n"
     corpus = clean(text)
     data, words_tokens = pad(corpus)
-    for i in range(len(words_tokens) - n):
-        seq = ' '.join(words_tokens[i:i + n])
-        if seq not in ngrams.keys():
-            ngrams[seq] = {}
-        if words_tokens[i + n] not in ngrams[seq].keys():
-            ngrams[seq][words_tokens[i + n]] = 1
-        else:
-            ngrams[seq][words_tokens[i + n]] += 1
-    for seq in ngrams.keys():
-        count = 0
-        for words in ngrams[seq].keys():
-            count += ngrams[seq][words]
-        for words in ngrams[seq].keys():
-            ngrams[seq][words] /= count
+    vocab_size = len(set(words_tokens))
+    for cur_n in range(1, n+1):
+        ngrams = {}
+        for i in range(len(words_tokens) - cur_n):
+            seq = ' '.join(words_tokens[i:i + cur_n])
+            if seq not in ngrams.keys():
+                ngrams[seq] = {}
+            if words_tokens[i + cur_n] not in ngrams[seq].keys():
+                ngrams[seq][words_tokens[i + cur_n]] = 1
+            else:
+                ngrams[seq][words_tokens[i + cur_n]] += 1
+        for seq in ngrams.keys():
+            count = 0
+            for words in ngrams[seq].keys():
+                count += ngrams[seq][words]
+            for words in ngrams[seq].keys():
+                ngrams[seq][words] /= count
+        ngrams_backoff.append(ngrams)
     print("Train File: " + file)
     print("N: " + str(n))
-    return ngrams
+    return ngrams_backoff
 
 
 def chooseFromDist(pos):
     # pos = {'A': Decimal("0.3"), 'B': Decimal("0.4"), 'C': Decimal("0.3")}
-    best_word = "the"
+    best_word = MOST_COMMON_WORD
     best_prob = 0
     for k, p in pos.items():
         if best_prob < p:
@@ -41,24 +48,15 @@ def chooseFromDist(pos):
     return best_word
 
 
-def run_model(n, ngrams, given_words, num_to_predict):
-    curr_sequence = ' '.join(given_words[-n:])
-    #print()
-    output = curr_sequence
-    for i in range(num_to_predict):
-        if curr_sequence not in ngrams.keys():
-            # todo: find a way to select next word even if the given sequence not exists in model
-            # choose most often occurred words or change the given sequence to a similar one
-            return "the"
-        possible_words = ngrams[curr_sequence]
-        next_word = chooseFromDist(possible_words)
-        if num_to_predict == 1:
-            return next_word
-        output += ' ' + next_word
-        seq_words = nltk.word_tokenize(output)
-        curr_sequence = ' '.join(seq_words[len(seq_words) - n:len(seq_words)])
-    return curr_sequence
-    #print(output)
+def run_model(n, ngram_backoff, given_words):
+    sequence = ' '.join(given_words[-n:])
+    for ngram in reversed(ngram_backoff):
+        if sequence in ngram.keys():
+            possible_words = ngram[sequence]
+            return chooseFromDist(possible_words)
+        else:
+            sequence = ' '.join(given_words[-(n-1):])
+    return MOST_COMMON_WORD
 
 
 def test_model(n, ngrams, test_file):
@@ -72,7 +70,7 @@ def test_model(n, ngrams, test_file):
     test_corpus = clean(test_text)
     test_data, words_tokens = pad(test_corpus)
     for i in range(len(words_tokens)-n):
-        word = run_model(n,ngrams,words_tokens[i:i+n],1)
+        word = run_model(n,ngrams,words_tokens[i:i+n])
         if words_tokens[i+n] == word:
             correctCount += 1
         # elif word == "":
@@ -88,11 +86,10 @@ def test_model(n, ngrams, test_file):
     print("Accuracy: " + str(correctCount / (len(words_tokens) - n)))
 
 
-n = 1
+n = 2
 model = build_model(n, "corpus/train_all.pkl")
 # given_previous_words = ["May", "last", "year", ","]
-# number_of_next_words_to_predict = 50
-# run_model(n, model, given_previous_words, number_of_next_words_to_predict)
+# run_model(n, model, given_previous_words)
 test_file = "corpus/test_business.pkl"
 test_model(n, model, test_file)
 
