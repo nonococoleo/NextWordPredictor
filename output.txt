@@ -1,0 +1,1152 @@
+N: 1
+Train File: corpus/train_all.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104872
+Correct Count: 16511
+Wrong Count: 88361
+Accuracy: 0.15743954535052254
+
+N: 1
+Train File: corpus/train_all.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19476
+Correct Count: 3267
+Wrong Count: 16209
+Accuracy: 0.16774491682070242
+
+N: 1
+Train File: corpus/train_all.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16184
+Correct Count: 2627
+Wrong Count: 13557
+Accuracy: 0.16232081067721207
+
+N: 1
+Train File: corpus/train_all.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22476
+Correct Count: 3704
+Wrong Count: 18772
+Accuracy: 0.16479800676276918
+
+N: 1
+Train File: corpus/train_all.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19154
+Correct Count: 2651
+Wrong Count: 16503
+Accuracy: 0.1384045108071421
+
+N: 1
+Train File: corpus/train_all.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27578
+Correct Count: 4262
+Wrong Count: 23316
+Accuracy: 0.1545434766843136
+
+N: 1
+Train File: corpus/train_business.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104872
+Correct Count: 12619
+Wrong Count: 92253
+Accuracy: 0.12032763750095354
+
+N: 1
+Train File: corpus/train_business.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19476
+Correct Count: 3214
+Wrong Count: 16262
+Accuracy: 0.16502361881289793
+
+N: 1
+Train File: corpus/train_business.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16184
+Correct Count: 1627
+Wrong Count: 14557
+Accuracy: 0.10053138902619871
+
+N: 1
+Train File: corpus/train_business.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22476
+Correct Count: 2777
+Wrong Count: 19699
+Accuracy: 0.12355401316960313
+
+N: 1
+Train File: corpus/train_business.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19154
+Correct Count: 1832
+Wrong Count: 17322
+Accuracy: 0.09564581810587867
+
+N: 1
+Train File: corpus/train_business.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27578
+Correct Count: 3169
+Wrong Count: 24409
+Accuracy: 0.11491043585466676
+
+N: 1
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104872
+Correct Count: 12102
+Wrong Count: 92770
+Accuracy: 0.11539781829277596
+
+N: 1
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19476
+Correct Count: 2202
+Wrong Count: 17274
+Accuracy: 0.1130622304374615
+
+N: 1
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16184
+Correct Count: 2685
+Wrong Count: 13499
+Accuracy: 0.16590459713297084
+
+N: 1
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22476
+Correct Count: 2413
+Wrong Count: 20063
+Accuracy: 0.10735896066915822
+
+N: 1
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19154
+Correct Count: 1950
+Wrong Count: 17204
+Accuracy: 0.1018064111934844
+
+N: 1
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27578
+Correct Count: 2852
+Wrong Count: 24726
+Accuracy: 0.10341576619044165
+
+N: 1
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104872
+Correct Count: 12610
+Wrong Count: 92262
+Accuracy: 0.12024181859790983
+
+N: 1
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19476
+Correct Count: 2428
+Wrong Count: 17048
+Accuracy: 0.12466625590470322
+
+N: 1
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16184
+Correct Count: 1604
+Wrong Count: 14580
+Accuracy: 0.09911023232822541
+
+N: 1
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22476
+Correct Count: 3742
+Wrong Count: 18734
+Accuracy: 0.16648869905677166
+
+N: 1
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19154
+Correct Count: 1879
+Wrong Count: 17275
+Accuracy: 0.09809961365772163
+
+N: 1
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27578
+Correct Count: 2957
+Wrong Count: 24621
+Accuracy: 0.10722314888679382
+
+N: 1
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104872
+Correct Count: 11437
+Wrong Count: 93435
+Accuracy: 0.1090567549012129
+
+N: 1
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19476
+Correct Count: 2036
+Wrong Count: 17440
+Accuracy: 0.10453891969603615
+
+N: 1
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16184
+Correct Count: 1589
+Wrong Count: 14595
+Accuracy: 0.09818339100346021
+
+N: 1
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22476
+Correct Count: 2328
+Wrong Count: 20148
+Accuracy: 0.10357714895888948
+
+N: 1
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19154
+Correct Count: 2882
+Wrong Count: 16272
+Accuracy: 0.15046465490237027
+
+N: 1
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27578
+Correct Count: 2602
+Wrong Count: 24976
+Accuracy: 0.09435056929436507
+
+N: 1
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104872
+Correct Count: 13148
+Wrong Count: 91724
+Accuracy: 0.1253718819131894
+
+N: 1
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19476
+Correct Count: 2347
+Wrong Count: 17129
+Accuracy: 0.1205072910248511
+
+N: 1
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16184
+Correct Count: 1787
+Wrong Count: 14397
+Accuracy: 0.11041769649036084
+
+N: 1
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22476
+Correct Count: 2647
+Wrong Count: 19829
+Accuracy: 0.11777006584801566
+
+N: 1
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19154
+Correct Count: 1855
+Wrong Count: 17299
+Accuracy: 0.09684661167380182
+
+N: 1
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27578
+Correct Count: 4512
+Wrong Count: 23066
+Accuracy: 0.16360867358039016
+
+N: 2
+Train File: corpus/train_all.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104871
+Correct Count: 20821
+Wrong Count: 84050
+Accuracy: 0.1985391576317571
+
+N: 2
+Train File: corpus/train_all.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19475
+Correct Count: 3739
+Wrong Count: 15736
+Accuracy: 0.19198973042362003
+
+N: 2
+Train File: corpus/train_all.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16183
+Correct Count: 3114
+Wrong Count: 13069
+Accuracy: 0.19242414879812147
+
+N: 2
+Train File: corpus/train_all.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22475
+Correct Count: 4282
+Wrong Count: 18193
+Accuracy: 0.19052280311457176
+
+N: 2
+Train File: corpus/train_all.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19153
+Correct Count: 2939
+Wrong Count: 16214
+Accuracy: 0.15344854591969925
+
+N: 2
+Train File: corpus/train_all.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27577
+Correct Count: 6747
+Wrong Count: 20830
+Accuracy: 0.24466040541030568
+
+N: 2
+Train File: corpus/train_business.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104871
+Correct Count: 12667
+Wrong Count: 92204
+Accuracy: 0.12078649006875113
+
+N: 2
+Train File: corpus/train_business.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19475
+Correct Count: 3583
+Wrong Count: 15892
+Accuracy: 0.18397946084724004
+
+N: 2
+Train File: corpus/train_business.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16183
+Correct Count: 1603
+Wrong Count: 14580
+Accuracy: 0.09905456343076068
+
+N: 2
+Train File: corpus/train_business.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22475
+Correct Count: 2719
+Wrong Count: 19756
+Accuracy: 0.12097886540600668
+
+N: 2
+Train File: corpus/train_business.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19153
+Correct Count: 1699
+Wrong Count: 17454
+Accuracy: 0.08870673001618545
+
+N: 2
+Train File: corpus/train_business.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27577
+Correct Count: 3063
+Wrong Count: 24514
+Accuracy: 0.111070819886137
+
+N: 2
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104871
+Correct Count: 12188
+Wrong Count: 92683
+Accuracy: 0.11621897378684289
+
+N: 2
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19475
+Correct Count: 2139
+Wrong Count: 17336
+Accuracy: 0.10983311938382542
+
+N: 2
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16183
+Correct Count: 3055
+Wrong Count: 13128
+Accuracy: 0.18877834764876722
+
+N: 2
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22475
+Correct Count: 2317
+Wrong Count: 20158
+Accuracy: 0.10309232480533927
+
+N: 2
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19153
+Correct Count: 1903
+Wrong Count: 17250
+Accuracy: 0.09935780295515063
+
+N: 2
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27577
+Correct Count: 2774
+Wrong Count: 24803
+Accuracy: 0.10059107227037023
+
+N: 2
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104871
+Correct Count: 12893
+Wrong Count: 91978
+Accuracy: 0.1229415186276473
+
+N: 2
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19475
+Correct Count: 2363
+Wrong Count: 17112
+Accuracy: 0.12133504492939666
+
+N: 2
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16183
+Correct Count: 1574
+Wrong Count: 14609
+Accuracy: 0.09726255947599333
+
+N: 2
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22475
+Correct Count: 4276
+Wrong Count: 18199
+Accuracy: 0.19025583982202446
+
+N: 2
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19153
+Correct Count: 1815
+Wrong Count: 17338
+Accuracy: 0.09476322247167546
+
+N: 2
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27577
+Correct Count: 2865
+Wrong Count: 24712
+Accuracy: 0.10389092359575008
+
+N: 2
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104871
+Correct Count: 11298
+Wrong Count: 93573
+Accuracy: 0.10773235689561461
+
+N: 2
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19475
+Correct Count: 1934
+Wrong Count: 17541
+Accuracy: 0.09930680359435173
+
+N: 2
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16183
+Correct Count: 1525
+Wrong Count: 14658
+Accuracy: 0.0942346907248347
+
+N: 2
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22475
+Correct Count: 2197
+Wrong Count: 20278
+Accuracy: 0.09775305895439378
+
+N: 2
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19153
+Correct Count: 3102
+Wrong Count: 16051
+Accuracy: 0.16195896204249988
+
+N: 2
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27577
+Correct Count: 2540
+Wrong Count: 25037
+Accuracy: 0.09210574029082207
+
+N: 2
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104871
+Correct Count: 15643
+Wrong Count: 89228
+Accuracy: 0.14916421126908297
+
+N: 2
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19475
+Correct Count: 2267
+Wrong Count: 17208
+Accuracy: 0.11640564826700898
+
+N: 2
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16183
+Correct Count: 1719
+Wrong Count: 14464
+Accuracy: 0.10622257924983007
+
+N: 2
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22475
+Correct Count: 2437
+Wrong Count: 20038
+Accuracy: 0.10843159065628476
+
+N: 2
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19153
+Correct Count: 1722
+Wrong Count: 17431
+Accuracy: 0.08990758627891192
+
+N: 2
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27577
+Correct Count: 7498
+Wrong Count: 20079
+Accuracy: 0.2718932443703086
+
+N: 3
+Train File: corpus/train_all.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104870
+Correct Count: 21978
+Wrong Count: 82892
+Accuracy: 0.209573757986078
+
+N: 3
+Train File: corpus/train_all.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19474
+Correct Count: 3465
+Wrong Count: 16009
+Accuracy: 0.1779295470884256
+
+N: 3
+Train File: corpus/train_all.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16182
+Correct Count: 2859
+Wrong Count: 13323
+Accuracy: 0.17667779013718948
+
+N: 3
+Train File: corpus/train_all.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22474
+Correct Count: 4158
+Wrong Count: 18316
+Accuracy: 0.1850137937171843
+
+N: 3
+Train File: corpus/train_all.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19152
+Correct Count: 2622
+Wrong Count: 16530
+Accuracy: 0.13690476190476192
+
+N: 3
+Train File: corpus/train_all.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27576
+Correct Count: 8874
+Wrong Count: 18702
+Accuracy: 0.3218015665796345
+
+N: 3
+Train File: corpus/train_business.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104870
+Correct Count: 9901
+Wrong Count: 94969
+Accuracy: 0.0944121293029465
+
+N: 3
+Train File: corpus/train_business.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19474
+Correct Count: 3225
+Wrong Count: 16249
+Accuracy: 0.1656054226147684
+
+N: 3
+Train File: corpus/train_business.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16182
+Correct Count: 1171
+Wrong Count: 15011
+Accuracy: 0.07236435545668027
+
+N: 3
+Train File: corpus/train_business.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22474
+Correct Count: 2023
+Wrong Count: 20451
+Accuracy: 0.09001512859304085
+
+N: 3
+Train File: corpus/train_business.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19152
+Correct Count: 1350
+Wrong Count: 17802
+Accuracy: 0.07048872180451128
+
+N: 3
+Train File: corpus/train_business.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27576
+Correct Count: 2132
+Wrong Count: 25444
+Accuracy: 0.07731360603423267
+
+N: 3
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104870
+Correct Count: 9305
+Wrong Count: 95565
+Accuracy: 0.0887289024506532
+
+N: 3
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19474
+Correct Count: 1484
+Wrong Count: 17990
+Accuracy: 0.07620416966211359
+
+N: 3
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16182
+Correct Count: 2688
+Wrong Count: 13494
+Accuracy: 0.1661104931405265
+
+N: 3
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22474
+Correct Count: 1729
+Wrong Count: 20745
+Accuracy: 0.0769333451988965
+
+N: 3
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19152
+Correct Count: 1450
+Wrong Count: 17702
+Accuracy: 0.07571010860484545
+
+N: 3
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27576
+Correct Count: 1954
+Wrong Count: 25622
+Accuracy: 0.07085871772555846
+
+N: 3
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104870
+Correct Count: 10381
+Wrong Count: 94489
+Accuracy: 0.0989892247544579
+
+N: 3
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19474
+Correct Count: 1720
+Wrong Count: 17754
+Accuracy: 0.08832289206120982
+
+N: 3
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16182
+Correct Count: 1196
+Wrong Count: 14986
+Accuracy: 0.07390928191818069
+
+N: 3
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22474
+Correct Count: 4001
+Wrong Count: 18473
+Accuracy: 0.17802794340126368
+
+N: 3
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19152
+Correct Count: 1405
+Wrong Count: 17747
+Accuracy: 0.07336048454469507
+
+N: 3
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27576
+Correct Count: 2059
+Wrong Count: 25517
+Accuracy: 0.07466637655932695
+
+N: 3
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104870
+Correct Count: 8647
+Wrong Count: 96223
+Accuracy: 0.08245446743587298
+
+N: 3
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19474
+Correct Count: 1412
+Wrong Count: 18062
+Accuracy: 0.07250693232001643
+
+N: 3
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16182
+Correct Count: 1160
+Wrong Count: 15022
+Accuracy: 0.07168458781362007
+
+N: 3
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22474
+Correct Count: 1649
+Wrong Count: 20825
+Accuracy: 0.07337367624810892
+
+N: 3
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19152
+Correct Count: 2568
+Wrong Count: 16584
+Accuracy: 0.13408521303258145
+
+N: 3
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27576
+Correct Count: 1858
+Wrong Count: 25718
+Accuracy: 0.06737742964897012
+
+N: 3
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104870
+Correct Count: 15303
+Wrong Count: 89567
+Accuracy: 0.14592352436349768
+
+N: 3
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19474
+Correct Count: 1612
+Wrong Count: 17862
+Accuracy: 0.08277703604806408
+
+N: 3
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16182
+Correct Count: 1262
+Wrong Count: 14920
+Accuracy: 0.07798788777654184
+
+N: 3
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22474
+Correct Count: 1767
+Wrong Count: 20707
+Accuracy: 0.0786241879505206
+
+N: 3
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19152
+Correct Count: 1372
+Wrong Count: 17780
+Accuracy: 0.07163742690058479
+
+N: 3
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27576
+Correct Count: 9290
+Wrong Count: 18286
+Accuracy: 0.3368871482448506
+
+N: 4
+Train File: corpus/train_all.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104869
+Correct Count: 19836
+Wrong Count: 85033
+Accuracy: 0.18915027319798988
+
+N: 4
+Train File: corpus/train_all.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19473
+Correct Count: 2707
+Wrong Count: 16766
+Accuracy: 0.1390129923483798
+
+N: 4
+Train File: corpus/train_all.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16181
+Correct Count: 2286
+Wrong Count: 13895
+Accuracy: 0.14127680613064705
+
+N: 4
+Train File: corpus/train_all.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22473
+Correct Count: 3465
+Wrong Count: 19008
+Accuracy: 0.15418502202643172
+
+N: 4
+Train File: corpus/train_all.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19151
+Correct Count: 2060
+Wrong Count: 17091
+Accuracy: 0.10756618453344473
+
+N: 4
+Train File: corpus/train_all.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27575
+Correct Count: 9318
+Wrong Count: 18257
+Accuracy: 0.33791477787851315
+
+N: 4
+Train File: corpus/train_business.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104869
+Correct Count: 7608
+Wrong Count: 97261
+Accuracy: 0.07254765469299793
+
+N: 4
+Train File: corpus/train_business.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19473
+Correct Count: 2597
+Wrong Count: 16876
+Accuracy: 0.13336414522672418
+
+N: 4
+Train File: corpus/train_business.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16181
+Correct Count: 931
+Wrong Count: 15250
+Accuracy: 0.05753661701996168
+
+N: 4
+Train File: corpus/train_business.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22473
+Correct Count: 1464
+Wrong Count: 21009
+Accuracy: 0.06514484047523696
+
+N: 4
+Train File: corpus/train_business.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19151
+Correct Count: 1127
+Wrong Count: 18024
+Accuracy: 0.05884810192679234
+
+N: 4
+Train File: corpus/train_business.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27575
+Correct Count: 1489
+Wrong Count: 26086
+Accuracy: 0.05399818676337262
+
+N: 4
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104869
+Correct Count: 7279
+Wrong Count: 97590
+Accuracy: 0.0694104072700226
+
+N: 4
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19473
+Correct Count: 1150
+Wrong Count: 18323
+Accuracy: 0.059056128999126996
+
+N: 4
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16181
+Correct Count: 2192
+Wrong Count: 13989
+Accuracy: 0.13546752363883569
+
+N: 4
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22473
+Correct Count: 1355
+Wrong Count: 21118
+Accuracy: 0.06029457571307792
+
+N: 4
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19151
+Correct Count: 1166
+Wrong Count: 17985
+Accuracy: 0.060884549109707066
+
+N: 4
+Train File: corpus/train_enter.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27575
+Correct Count: 1416
+Wrong Count: 26159
+Accuracy: 0.051350861287398006
+
+N: 4
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104869
+Correct Count: 8107
+Wrong Count: 96762
+Accuracy: 0.0773059722129514
+
+N: 4
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19473
+Correct Count: 1225
+Wrong Count: 18248
+Accuracy: 0.0629076156729831
+
+N: 4
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16181
+Correct Count: 923
+Wrong Count: 15258
+Accuracy: 0.05704220999938199
+
+N: 4
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22473
+Correct Count: 3356
+Wrong Count: 19117
+Accuracy: 0.14933475726427267
+
+N: 4
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19151
+Correct Count: 1144
+Wrong Count: 18007
+Accuracy: 0.05973578403216542
+
+N: 4
+Train File: corpus/train_pol.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27575
+Correct Count: 1459
+Wrong Count: 26116
+Accuracy: 0.0529102447869447
+
+N: 4
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104869
+Correct Count: 6770
+Wrong Count: 98099
+Accuracy: 0.064556732685541
+
+N: 4
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19473
+Correct Count: 1127
+Wrong Count: 18346
+Accuracy: 0.057875006419144455
+
+N: 4
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16181
+Correct Count: 941
+Wrong Count: 15240
+Accuracy: 0.058154625795686296
+
+N: 4
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22473
+Correct Count: 1366
+Wrong Count: 21107
+Accuracy: 0.06078405197347929
+
+N: 4
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19151
+Correct Count: 1959
+Wrong Count: 17192
+Accuracy: 0.10229230849563992
+
+N: 4
+Train File: corpus/train_sport.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27575
+Correct Count: 1377
+Wrong Count: 26198
+Accuracy: 0.049936536718041706
+
+N: 4
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_all.pkl
+Total Words: 104869
+Correct Count: 14030
+Wrong Count: 90839
+Accuracy: 0.13378596153296016
+
+N: 4
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_business.pkl
+Total Words: 19473
+Correct Count: 1200
+Wrong Count: 18273
+Accuracy: 0.061623786781697734
+
+N: 4
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_enter.pkl
+Total Words: 16181
+Correct Count: 962
+Wrong Count: 15219
+Accuracy: 0.05945244422470799
+
+N: 4
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_pol.pkl
+Total Words: 22473
+Correct Count: 1374
+Wrong Count: 21099
+Accuracy: 0.061140034708316644
+
+N: 4
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_sport.pkl
+Total Words: 19151
+Correct Count: 1136
+Wrong Count: 18015
+Accuracy: 0.05931805127669573
+
+N: 4
+Train File: corpus/train_tech.pkl
+Test File: corpus/test_tech.pkl
+Total Words: 27575
+Correct Count: 9358
+Wrong Count: 18217
+Accuracy: 0.33936536718041704
+

@@ -1,7 +1,33 @@
 # https://stackabuse.com/python-for-nlp-developing-an-automatic-text-filler-using-n-grams/
 # https://www.cs.cornell.edu/courses/cs4740/2014sp/lectures/smoothing+backoff.pdf
+# https://rpubs.com/leomak/TextPrediction_KBO_Katz_Good-Turing
 
+# -*- coding: utf-8 -*-
+import argparse
 from data import *
+
+# Default Values
+n = 3
+training_file = "corpus/train_all.pkl"
+test_file = "corpus/test_all.pkl"
+output_file = "output.txt"
+# -------------------------
+parser = argparse.ArgumentParser()
+parser.add_argument("--N", type=int, choices=[1, 2, 3, 4, 5], help="N for NGram")
+parser.add_argument("--training_file", help="Training file path, default: corpus/train_all.pkl")
+parser.add_argument("--test_file", help="Test file path, default: corpus/test_all.pkl")
+parser.add_argument("--output_file", help="Output filename, default: output.txt")
+
+args = parser.parse_args()
+if args.__dict__["N"] is not None:
+    n = args.__dict__["N"]
+if args.__dict__["training_file"] is not None:
+    training_file = args.__dict__["training_file"]
+if args.__dict__["test_file"] is not None:
+    test_file = args.__dict__["test_file"]
+if args.__dict__["output_file"] is not None:
+    output_file = args.__dict__["output_file"]
+
 
 MOST_COMMON_WORD = "the"
 
@@ -32,8 +58,6 @@ def build_model(n, file):
             for words in ngrams[seq].keys():
                 ngrams[seq][words] /= count
         ngrams_backoff.append(ngrams)
-    print("Train File: " + file)
-    print("N: " + str(n))
     return ngrams_backoff
 
 
@@ -78,26 +102,35 @@ def test_model(n, ngrams, test_file):
         else:
             wrongCount += 1
 
+    file = open(output_file, 'a+')
+    file.write("N: " + str(n) + "\n")
+    file.write("Train File: " + training_file + "\n")
+    file.write("Test File: " + test_file+"\n")
+    file.write("Total Words: " + str(len(words_tokens) - n)+"\n")
+    file.write("Correct Count: " + str(correctCount)+"\n")
+    file.write("Wrong Count: " + str(wrongCount)+"\n")
+    file.write("Accuracy: " + str(correctCount / (len(words_tokens) - n))+"\n")
+    file.write("\n")
+    print("N: " + str(n))
+    print("Train File: " + training_file)
     print("Test File: " + test_file)
     print("Total Words: " + str(len(words_tokens)-n))
     print("Correct Count: " + str(correctCount))
-    # print(empty)
     print("Wrong Count: " + str(wrongCount))
     print("Accuracy: " + str(correctCount / (len(words_tokens) - n)))
+    print()
 
 
-n = 2
-model = build_model(n, "corpus/train_all.pkl")
-# given_previous_words = ["May", "last", "year", ","]
-# run_model(n, model, given_previous_words)
-test_file = "corpus/test_business.pkl"
+model = build_model(n, training_file)
 test_model(n, model, test_file)
 
 ''' 
+Train File: corpus/train_all.pkl
+N: 1
 Test File: corpus/test_business.pkl
-Total Words: 19476
-Correct Count: 3267
-Wrong Count: 16209
-Accuracy: 0.16774491682070242
+Total Words: 19475
+Correct Count: 3739
+Wrong Count: 15736
+Accuracy: 0.19198973042362003
 '''
 
