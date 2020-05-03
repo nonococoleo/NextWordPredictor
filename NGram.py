@@ -38,7 +38,7 @@ MOST_COMMON_WORD = "the"
 
 def build_model(n, file):
     ngrams_backoff = []
-    data = load_data(file)
+    data = load_corpus(file)
     text = ""
     for lines in data:
         text += lines + "\n"
@@ -93,7 +93,7 @@ def run_model(n, ngram_backoff, given_words, backoff):
 
 
 def test_model(n, ngrams, test_file, backoff):
-    test_data = load_data(test_file)
+    test_data = load_corpus(test_file)
     test_text = ""
     correctCount = 0
     wrongCount = 0

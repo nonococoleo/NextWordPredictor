@@ -1,9 +1,10 @@
 import nltk
 import os
-from pickle import dump,load
+from pickle import dump, load
 
 
 def pad(corpus, length=3):
+    """pad corpus for target window length of input"""
     data = []
     label = []
     for sent in corpus:
@@ -14,6 +15,7 @@ def pad(corpus, length=3):
 
 
 def clean(text):
+    """clean corpus text"""
     res = []
     for i in text.split('\n'):
         for j in nltk.sent_tokenize(i):
@@ -28,7 +30,8 @@ def clean(text):
     return res
 
 
-def load_dataset(path, category):
+def format_dataset(path, category):
+    """load dataset from several file and organize into one file"""
     files = os.listdir(path)
     res = []
     for file in files:
@@ -38,17 +41,20 @@ def load_dataset(path, category):
     with open(path + category + ".pkl", "rb") as f:
         dump(res, f, -1)
 
-def load_data(path):
-    with open(path,'rb') as f:
-        data=load(f)
+
+def load_corpus(path):
+    """load pre-formated corpus"""
+    with open(path, 'rb') as f:
+        data = load(f)
     return data
 
+
 if __name__ == '__main__':
-    data=load_data("corpus/train_business.pkl")
+    data = load_corpus("corpus/train_all.pkl")
     text = ""
     for lines in data:
         text += lines + "\n"
     corpus = clean(text)
-    data,label=pad(corpus)
+    data, label = pad(corpus)
     print(data[:10])
     print(label[:10])
