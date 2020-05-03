@@ -11,12 +11,14 @@ n = 3
 training_file = "corpus/train_all.pkl"
 test_file = "corpus/test_all.pkl"
 output_file = "output.txt"
+backoff = True
 # -------------------------
 parser = argparse.ArgumentParser()
 parser.add_argument("--N", type=int, choices=[1, 2, 3, 4, 5], help="N for NGram")
 parser.add_argument("--training_file", help="Training file path, default: corpus/train_all.pkl")
 parser.add_argument("--test_file", help="Test file path, default: corpus/test_all.pkl")
 parser.add_argument("--output_file", help="Output filename, default: output.txt")
+parser.add_argument("--backoff", help="Using backoff model, default: True")
 
 args = parser.parse_args()
 if args.__dict__["N"] is not None:
@@ -27,7 +29,9 @@ if args.__dict__["test_file"] is not None:
     test_file = args.__dict__["test_file"]
 if args.__dict__["output_file"] is not None:
     output_file = args.__dict__["output_file"]
-
+if args.__dict__["backoff"] is not None:
+    if args.__dict__["backoff"] == "False":
+        backoff = False
 
 MOST_COMMON_WORD = "the"
 
@@ -72,18 +76,23 @@ def chooseFromDist(pos):
     return best_word
 
 
-def run_model(n, ngram_backoff, given_words):
+def run_model(n, ngram_backoff, given_words, backoff):
     sequence = ' '.join(given_words[-n:])
-    for ngram in reversed(ngram_backoff):
-        if sequence in ngram.keys():
-            possible_words = ngram[sequence]
+    if backoff:
+        for ngram in reversed(ngram_backoff):
+            if sequence in ngram.keys():
+                possible_words = ngram[sequence]
+                return chooseFromDist(possible_words)
+            else:
+                sequence = ' '.join(given_words[-(n - 1):])
+    else:
+        if sequence in ngram_backoff[-1].keys():
+            possible_words = ngram_backoff[-1][sequence]
             return chooseFromDist(possible_words)
-        else:
-            sequence = ' '.join(given_words[-(n-1):])
     return MOST_COMMON_WORD
 
 
-def test_model(n, ngrams, test_file):
+def test_model(n, ngrams, test_file, backoff):
     test_data = load_data(test_file)
     test_text = ""
     correctCount = 0
@@ -93,12 +102,11 @@ def test_model(n, ngrams, test_file):
         test_text += lines + "\n"
     test_corpus = clean(test_text)
     test_data, words_tokens = pad(test_corpus)
+
     for i in range(len(words_tokens)-n):
-        word = run_model(n,ngrams,words_tokens[i:i+n])
+        word = run_model(n,ngrams,words_tokens[i:i+n], backoff)
         if words_tokens[i+n] == word:
             correctCount += 1
-        # elif word == "":
-        #     empty += 1
         else:
             wrongCount += 1
 
@@ -106,6 +114,7 @@ def test_model(n, ngrams, test_file):
     file.write("N: " + str(n) + "\n")
     file.write("Train File: " + training_file + "\n")
     file.write("Test File: " + test_file+"\n")
+    file.write("Backoff: " + str(backoff)+"\n")
     file.write("Total Words: " + str(len(words_tokens) - n)+"\n")
     file.write("Correct Count: " + str(correctCount)+"\n")
     file.write("Wrong Count: " + str(wrongCount)+"\n")
@@ -114,6 +123,7 @@ def test_model(n, ngrams, test_file):
     print("N: " + str(n))
     print("Train File: " + training_file)
     print("Test File: " + test_file)
+    print("Backoff: " + str(backoff))
     print("Total Words: " + str(len(words_tokens)-n))
     print("Correct Count: " + str(correctCount))
     print("Wrong Count: " + str(wrongCount))
@@ -122,7 +132,7 @@ def test_model(n, ngrams, test_file):
 
 
 model = build_model(n, training_file)
-test_model(n, model, test_file)
+test_model(n, model, test_file, backoff)
 
 ''' 
 Train File: corpus/train_all.pkl
