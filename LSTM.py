@@ -98,10 +98,10 @@ def train(device, app, file_name, window_length=3, hidden_size=600, num_layers=2
         losses.append(cur_loss)
         print(cur_loss)
         if len(losses) >= patience and cur_loss > max(losses[-1 - patience:-1]):
-            torch.save(model, "model_%d.pt" % epoch)
+            torch.save(model, "data/model_%d.pt" % epoch)
             break
         if epoch % patience == 0:
-            torch.save(model, "model_%d.pt" % epoch)
+            torch.save(model, "data/model_%d.pt" % epoch)
     return model
 
 
@@ -155,13 +155,13 @@ if __name__ == '__main__':
         device = torch.device("cuda:0")
     else:
         device = torch.device('cpu')
-    with open("vocab", "rb") as f:
+    with open("data/vocab", "rb") as f:
         app = load(f)
 
     # TODO
     window_length = 4
     train_file = "corpus/train_business.pkl"
-    model = torch.load("model_6.pt", map_location=torch.device('cpu'))
+    model = torch.load("data/model_bus_l.pt", map_location=torch.device('cpu'))
     # model = train(device, app, train_file, window_length)
 
     test_file = "corpus/test_all.pkl"

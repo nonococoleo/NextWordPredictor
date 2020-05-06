@@ -13,11 +13,11 @@ if torch.cuda.is_available():
 else:
     device = torch.device('cpu')
 
-with open("small-vocab", "rb") as f:
+with open("data/vocab", "rb") as f:
     app = load(f)
 
 window_length = 3
-model = torch.load("model_6.pt", map_location=torch.device('cpu'))
+model = torch.load("data/model_all.pt", map_location=torch.device('cpu'))
 print("model loaded")
 
 server = Flask(__name__)
