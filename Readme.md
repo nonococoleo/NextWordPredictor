@@ -1,4 +1,5 @@
 # Next Word Predictor
+Predict next word based on last N words typed with two kinds of model  
 
 usage
 -------
@@ -6,7 +7,7 @@ usage
 
 * Train and test the model with the following parameters: n, training_file, test_file, output_file, backoff
 ```shell script
-python3 NGram.py --N [n] --training_file [training_file] --test_file [test_file] --output_file [output_file] --backoff [True/False]
+python3 NGram.py [--N n] [--training_file training_file] [--test_file test_file] [--output_file output_file] [--backoff True/False]
 ```
 
 2. LSTM model  
@@ -16,11 +17,11 @@ cd data
 chmod +x download_glove.sh
 ./download_glove.sh
 ```
-* building vocabulary with pretrain Glove data(e.g. data/glove.6B.300d.txt) and training corpus(e.g. data/train_all.pkl)
+* building vocabulary dictionary (data/vocab) with pretrain Glove data(e.g. data/glove.6B.300d.txt) and training corpus(e.g. data/train_all.pkl)
 ```shell script
 python3 vocabulary.py [Glove_file] [corpus_file]
 ```
-* training Neural Network with training corpus(e.g. corpus/train_all.pkl)  
+* training Neural Network with training corpus(e.g. corpus/train_all.pkl) and save (data/model_all.pt)  
 required: vocabulary file (data/vocab)  
 optional: window length  
 ```shell script
