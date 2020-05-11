@@ -103,11 +103,12 @@ class Vocabulary:
 
 if __name__ == '__main__':
     from pickle import dump, load
+    import sys
 
-    # app = Vocabulary('data/glove.6B.300d.txt')
-    app = load(open("data/vocab", "rb"))
+    app = Vocabulary(sys.argv[1])
+    # app = load(open("data/vocab", "rb"))
 
-    data = load_corpus("corpus/train_business.pkl")
+    data = load_corpus(sys.argv[2])
     text = ""
     for lines in data:
         text += lines + "\n"
@@ -115,6 +116,6 @@ if __name__ == '__main__':
     print("corpus loaded")
 
     app.build_word_dict(corpus)
-    with open("data/small-vocab", "wb") as f:
+    with open("data/vocab", "wb") as f:
         dump(app, f, -1)
     print("model saved")
