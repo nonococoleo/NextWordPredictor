@@ -7,6 +7,7 @@ import numpy as np
 
 class TextDataset(Dataset):
     """Dataloader Structure for classification"""
+
     def __init__(self, text_data, labels_data):
         super().__init__()
         self.text_data = text_data
@@ -21,7 +22,8 @@ class TextDataset(Dataset):
 
 class LSTMClassifier(nn.Module):
     """Long short-term memory model"""
-    def __init__(self, embeddings, hidden_size, num_layers, dropout_prob=0.4):
+
+    def __init__(self, embeddings, hidden_size, num_layers, dropout_prob=0.1):
         """neural network structure"""
         super().__init__()
         # input layer
@@ -48,8 +50,7 @@ class LSTMClassifier(nn.Module):
         return logits
 
 
-def train(device, app, file_name, window_length=3, hidden_size=600, num_layers=2, dropout_prob=0.4, batch_size=64,
-          start=0, num_epochs=1000, patience=10, model=None):
+def train(device, app, file_name, window_length=3, hidden_size=600, num_layers=2, dropout_prob=0.1, batch_size=64, start=0, num_epochs=100, patience=10, model=None):
     """
     train neural network model
     :param device: current device
@@ -68,14 +69,11 @@ def train(device, app, file_name, window_length=3, hidden_size=600, num_layers=2
     """
     print("training")
     if not model:
-        # TODO
         model = LSTMClassifier(app.embeddings, hidden_size, num_layers, dropout_prob)
         model.to(device)
-    # TODO
     criterion = nn.CrossEntropyLoss()
-    # TODO
     optimizer = optim.Adam(model.parameters(), lr=0.001)
-    # print(model)
+    print(model)
 
     train_data, train_label = app.load_data(file_name, window_length)
     train_loader = torch.utils.data.DataLoader(dataset=TextDataset(train_data, train_label),
@@ -98,7 +96,7 @@ def train(device, app, file_name, window_length=3, hidden_size=600, num_layers=2
         losses.append(cur_loss)
         print(cur_loss)
         if len(losses) >= patience and cur_loss > max(losses[-1 - patience:-1]):
-            torch.save(model, "data/model_%d.pt" % epoch)
+            torch.save(model, "data/model_all.pt" % epoch)
             break
         if epoch % patience == 0:
             torch.save(model, "data/model_%d.pt" % epoch)
@@ -150,6 +148,7 @@ def evaluate(model, dataloader, device):
 if __name__ == '__main__':
     from Vocabulary import Vocabulary
     from pickle import load
+    import argparse
 
     if torch.cuda.is_available():
         device = torch.device("cuda:0")
@@ -158,21 +157,26 @@ if __name__ == '__main__':
     with open("data/vocab", "rb") as f:
         app = load(f)
 
-    # TODO
-    window_length = 4
-    train_file = "corpus/train_business.pkl"
-    model = torch.load("data/model_bus_l.pt", map_location=torch.device('cpu'))
-    # model = train(device, app, train_file, window_length)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--train', nargs=1, help='path to corpus file')
+    parser.add_argument('--test', nargs=1, help='path to model file')
+    parser.add_argument('--length', nargs=1, type=int, help='window length')
+    args = parser.parse_args()
 
-    test_file = "corpus/test_all.pkl"
-    test(device, app, model, test_file, window_length)
-    test_file = "corpus/test_business.pkl"
-    test(device, app, model, test_file, window_length)
-    test_file = "corpus/test_enter.pkl"
-    test(device, app, model, test_file, window_length)
-    test_file = "corpus/test_pol.pkl"
-    test(device, app, model, test_file, window_length)
-    test_file = "corpus/test_sport.pkl"
-    test(device, app, model, test_file, window_length)
-    test_file = "corpus/test_tech.pkl"
-    test(device, app, model, test_file, window_length)
+    window_length = args.length[0] if args.length else 4
+    if args.train:
+        model = train(device, app, args.train[0], window_length)
+    if args.test:
+        model = torch.load(args.test, map_location=torch.device('cpu'))
+        test_file = "corpus/test_all.pkl"
+        test(device, app, model, test_file, window_length)
+        test_file = "corpus/test_business.pkl"
+        test(device, app, model, test_file, window_length)
+        test_file = "corpus/test_enter.pkl"
+        test(device, app, model, test_file, window_length)
+        test_file = "corpus/test_pol.pkl"
+        test(device, app, model, test_file, window_length)
+        test_file = "corpus/test_sport.pkl"
+        test(device, app, model, test_file, window_length)
+        test_file = "corpus/test_tech.pkl"
+        test(device, app, model, test_file, window_length)
