@@ -9,14 +9,14 @@ MOST_COMMON_WORD = "the"
 n = 3
 training_file = "corpus/train_all.pkl"
 test_file = "corpus/test_all.pkl"
-output_file = "output.txt"
+output_file = "data/output.txt"
 backoff = True
 # -------------------------
 parser = argparse.ArgumentParser()
 parser.add_argument("--N", type=int, choices=[1, 2, 3, 4, 5], help="N for NGram")
 parser.add_argument("--training_file", help="Training file path, default: corpus/train_all.pkl")
 parser.add_argument("--test_file", help="Test file path, default: corpus/test_all.pkl")
-parser.add_argument("--output_file", help="Output filename, default: output.txt")
+parser.add_argument("--output_file", help="Output filename, default: data/output.txt")
 parser.add_argument("--backoff", help="Using backoff model, default: True")
 
 args = parser.parse_args()
