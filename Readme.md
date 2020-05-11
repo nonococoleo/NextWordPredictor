@@ -5,7 +5,13 @@ usage
 1. N-gram model
 
 2. LSTM model  
-* building vocabulary with pretrain Glove data(e.g. glove.6B.300d.txt) and training corpus(e.g. data/train_all.pkl)
+* download pretrain Glvoe data  
+```shell script
+cd data
+chmod +x download_glove.sh
+./download_glove.sh
+```
+* building vocabulary with pretrain Glove data(e.g. data/glove.6B.300d.txt) and training corpus(e.g. data/train_all.pkl)
 ```shell script
 python3 vocabulary.py [Glove_file] [corpus_file]
 ```
